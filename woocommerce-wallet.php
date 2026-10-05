@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Wallet Platform for WooCommerce
+ * Plugin URI: https://github.com/ildrm/woocommerce-wallet-platform
  * Description: Ledger-first closed-loop wallet and store credit. Development release; see release gates.
  * Version: 0.1.0
  * Author: Shahin Ilderemi
