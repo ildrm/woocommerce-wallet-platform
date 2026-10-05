@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Wallet Platform">
+    <description>PSR-12 for namespaced financial code; WordPress adapters use native public hooks.</description>
+    <file>src</file>
+    <arg name="extensions" value="php"/>
+    <rule ref="PSR12">
+        <exclude name="Generic.Files.LineLength"/>
+    </rule>
+    <rule ref="PSR1.Methods.CamelCapsMethodName">
+        <exclude-pattern>src/WooCommerce/*</exclude-pattern>
+    </rule>
+</ruleset>

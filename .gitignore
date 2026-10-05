@@ -1,0 +1,8 @@
+/vendor/
+/node_modules/
+/dist/
+/.phpunit.cache/
+/.phpstan-cache/
+/tests/.runtime/
+/.env
+*.log

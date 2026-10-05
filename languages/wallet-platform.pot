@@ -1,0 +1,977 @@
+# Copyright (C) 2026 Shahin Ilderemi
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Wallet Platform for WooCommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-wallet\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-05T07:21:42+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wallet-platform\n"
+
+#. Plugin Name of the plugin
+#: woocommerce-wallet.php
+msgid "Wallet Platform for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+#: woocommerce-wallet.php
+msgid "Ledger-first closed-loop wallet and store credit. Development release; see release gates."
+msgstr ""
+
+#. Author of the plugin
+#: woocommerce-wallet.php
+msgid "Shahin Ilderemi"
+msgstr ""
+
+#. Author URI of the plugin
+#: woocommerce-wallet.php
+msgid "https://ildrm.com"
+msgstr ""
+
+#: src/Bootstrap/Plugin.php:43
+msgid "This development build requires a single-site installation."
+msgstr ""
+
+#: src/Bootstrap/Plugin.php:46
+msgid "Wallet Platform requires 64-bit PHP and active WooCommerce."
+msgstr ""
+
+#: src/Bootstrap/Plugin.php:148
+msgid "Wallet Platform is unavailable. Review the database schema and environment before accepting wallet payments."
+msgstr ""
+
+#: src/Bootstrap/Plugin.php:218
+msgid "PayPal wallet payments are unavailable. Review the server configuration before accepting split payments."
+msgstr ""
+
+#: src/Infrastructure/Notifications/WordPressEvents.php:31
+msgid "A wallet transaction has been recorded. Sign in to your account to see the committed balance and transaction history."
+msgstr ""
+
+#: src/Infrastructure/Notifications/WordPressEvents.php:32
+msgid "Your wallet has been updated"
+msgstr ""
+
+#: src/Presentation/Format.php:20
+msgid "Credit added"
+msgstr ""
+
+#: src/Presentation/Format.php:21
+msgid "Wallet adjustment"
+msgstr ""
+
+#: src/Presentation/Format.php:22
+msgid "Funds reserved"
+msgstr ""
+
+#: src/Presentation/Format.php:23
+msgid "Wallet payment"
+msgstr ""
+
+#: src/Presentation/Format.php:24
+msgid "Reservation released"
+msgstr ""
+
+#: src/Presentation/Format.php:25
+msgid "Payment refunded"
+msgstr ""
+
+#: src/Presentation/Format.php:26
+msgid "Wallet funding received"
+msgstr ""
+
+#: src/Presentation/Format.php:27
+msgid "Wallet funding returned"
+msgstr ""
+
+#: src/Presentation/Format.php:28
+msgid "Credit availability or expiration"
+msgstr ""
+
+#: src/Presentation/Format.php:29
+msgid "Wallet transaction"
+msgstr ""
+
+#: src/Presentation/Format.php:45
+msgid "Active"
+msgstr ""
+
+#: src/Presentation/Format.php:45
+#: src/WordPress/Admin/AdminPage.php:82
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Customer/WalletPage.php:55
+msgid "Pending"
+msgstr ""
+
+#: src/Presentation/Format.php:46
+msgid "Frozen"
+msgstr ""
+
+#: src/Presentation/Format.php:46
+msgid "Suspended"
+msgstr ""
+
+#: src/Presentation/Format.php:47
+msgid "Closed"
+msgstr ""
+
+#: src/Presentation/Format.php:47
+#: src/Presentation/Format.php:60
+msgid "Unavailable"
+msgstr ""
+
+#: src/Presentation/Format.php:54
+msgid "Request created"
+msgstr ""
+
+#: src/Presentation/Format.php:55
+msgid "Awaiting payment"
+msgstr ""
+
+#: src/Presentation/Format.php:56
+msgid "Funding received"
+msgstr ""
+
+#: src/Presentation/Format.php:57
+msgid "Refund needs review"
+msgstr ""
+
+#: src/Presentation/Format.php:58
+msgid "Funding returned"
+msgstr ""
+
+#: src/Presentation/Format.php:59
+msgid "Part of funding returned"
+msgstr ""
+
+#: src/Presentation/Format.php:67
+msgid "Ready for payment"
+msgstr ""
+
+#: src/Presentation/Format.php:68
+msgid "Payment processing"
+msgstr ""
+
+#: src/Presentation/Format.php:69
+msgid "Awaiting PayPal approval"
+msgstr ""
+
+#: src/Presentation/Format.php:70
+msgid "Awaiting PayPal confirmation"
+msgstr ""
+
+#: src/Presentation/Format.php:71
+msgid "PayPal confirmed; wallet confirmation pending"
+msgstr ""
+
+#: src/Presentation/Format.php:72
+msgid "Completed"
+msgstr ""
+
+#: src/Presentation/Format.php:73
+msgid "Needs review"
+msgstr ""
+
+#: src/Presentation/Format.php:74
+msgid "Cancellation pending"
+msgstr ""
+
+#: src/Presentation/Format.php:75
+msgid "Cancelled"
+msgstr ""
+
+#: src/Presentation/Format.php:76
+msgid "Returning payment"
+msgstr ""
+
+#: src/Presentation/Format.php:77
+msgid "Payment returned"
+msgstr ""
+
+#: src/Presentation/Format.php:78
+msgid "Awaiting review"
+msgstr ""
+
+#: src/WooCommerce/Blocks/PaymentMethod.php:36
+#: src/WooCommerce/Gateway/WalletGateway.php:17
+#: src/WooCommerce/Gateway/WalletGateway.php:19
+#: src/WordPress/Admin/AdminPage.php:22
+#: src/WordPress/Admin/AdminPage.php:74
+#: src/WordPress/Admin/PaymentsPage.php:72
+#: src/WordPress/Customer/WalletPage.php:23
+#: src/WordPress/Privacy.php:69
+#: assets/frontend/blocks.js:21
+msgid "Wallet"
+msgstr ""
+
+#: src/WooCommerce/Blocks/PaymentMethod.php:36
+msgid "Pay the full total from available store credit."
+msgstr ""
+
+#: src/WooCommerce/Blocks/PayPalMethod.php:36
+#: src/WooCommerce/Gateway/PayPalGateway.php:17
+#: src/WooCommerce/Gateway/PayPalGateway.php:19
+#: assets/frontend/paypal.js:46
+msgid "Wallet + PayPal"
+msgstr ""
+
+#: src/WooCommerce/Blocks/PayPalMethod.php:36
+msgid "Wallet funds are reserved until PayPal confirms the remaining amount."
+msgstr ""
+
+#: src/WooCommerce/Gateway/PayPalGateway.php:18
+msgid "Use eligible wallet credit and pay the remaining order amount with PayPal."
+msgstr ""
+
+#: src/WooCommerce/Gateway/PayPalGateway.php:20
+msgid "Your wallet credit is reserved while PayPal confirms the remaining amount. The order is paid after both payments are confirmed."
+msgstr ""
+
+#. translators: 1: formatted wallet amount, 2: formatted PayPal amount.
+#: src/WooCommerce/Gateway/PayPalGateway.php:62
+#: assets/frontend/paypal.js:39
+#, php-format,js-format
+msgid "Wallet: %1$s. PayPal: %2$s."
+msgstr ""
+
+#: src/WooCommerce/Gateway/PayPalGateway.php:66
+#: assets/frontend/paypal.js:24
+msgid "Review your wallet balance before paying."
+msgstr ""
+
+#: src/WooCommerce/Gateway/PayPalGateway.php:98
+msgid "Payment could not be confirmed. Check this order’s payment status before paying again."
+msgstr ""
+
+#: src/WooCommerce/Gateway/PayPalGateway.php:105
+msgid "PayPal wallet payments are disabled."
+msgstr ""
+
+#: src/WooCommerce/Gateway/WalletGateway.php:18
+msgid "Pay the full order total using available store credit."
+msgstr ""
+
+#: src/WooCommerce/Gateway/WalletGateway.php:20
+msgid "The full order amount will be reserved and paid from your wallet."
+msgstr ""
+
+#: src/WooCommerce/Gateway/WalletGateway.php:66
+msgid "Wallet payment could not be completed. Check your balance and retry this order; the same capture will be recovered."
+msgstr ""
+
+#: src/WooCommerce/Orders/OrderPayments.php:105
+msgid "Create the refund through WooCommerce so it has a stable refund reference."
+msgstr ""
+
+#: src/WooCommerce/Orders/OrderPayments.php:128
+msgid "Wallet refund could not be completed. Check its status before retrying."
+msgstr ""
+
+#: src/WooCommerce/Orders/OrderPayments.php:142
+msgid "Wallet refund requires review. Retry the refund event with its original reference."
+msgstr ""
+
+#: src/WooCommerce/Orders/OrderPayments.php:185
+msgid "Wallet restoration after order cancellation or failure"
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:102
+msgid "PayPal payment is awaiting confirmation. Do not collect another payment for this order."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:136
+msgid "Customer cancelled PayPal wallet checkout."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:144
+msgid "Wallet refund requires permission to restore wallet credit."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:171
+msgid "Split refund is awaiting provider confirmation or review. Do not issue another refund; recovery uses the original request."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:173
+msgid "Refund is awaiting confirmation or review. Check this order’s wallet payment status before retrying."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:187
+msgid "Split payment restoration after cancellation"
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:195
+msgid "External payment compensation is confirmed. The order was never paid from the wallet or released for fulfillment."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:217
+msgid "Delayed split refund is settled and recorded. Check inventory separately if the original request included restocking."
+msgstr ""
+
+#: src/WooCommerce/Orders/PayPalOrders.php:242
+msgid "Verified split refund recovery completed the order refund."
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:22
+#: src/WooCommerce/Orders/TopUps.php:119
+#: src/WordPress/Admin/FundingPage.php:21
+msgid "Wallet funding"
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:43
+msgid "Funding value was already consumed. Wallet frozen; financial recovery review required."
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:48
+msgid "Funding refund requires wallet reconciliation."
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:69
+msgid "Funding is unavailable."
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:88
+msgid "Funding is temporarily unavailable. Retry with the original form reference."
+msgstr ""
+
+#: src/WooCommerce/Orders/TopUps.php:156
+msgid "Wallet funding was not credited. Settlement verification or wallet review is required; retry with this order reference."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:30
+msgid "You cannot perform this wallet action."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:34
+msgid "Confirm the financial action before continuing."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:38
+msgid "Choose an existing customer."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:60
+msgid "Wallet action rejected"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:63
+msgid "Processing failed. Retry with the same form reference; do not create a second adjustment until its status is known."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:76
+msgid "Wallet action committed."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:78
+msgid "Closed-loop store credit. Wallet deposits are liabilities; they are not sales revenue."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:80
+msgid "Outstanding liability by currency"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:82
+msgid "accounts"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:82
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Customer/WalletPage.php:55
+msgid "Available"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:82
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Customer/WalletPage.php:55
+msgid "Reserved"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:86
+#: src/WordPress/Admin/AdminPage.php:90
+msgid "Wallet accounts"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:86
+msgid "Filter by customer ID"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:86
+msgid "Search"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Admin/AdminPage.php:119
+msgid "Customer ID"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Currency"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:91
+#: src/WordPress/Admin/FundingPage.php:84
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Status"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:104
+msgid "Next accounts"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:107
+msgid "Add store credit"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:107
+msgid "Debit available credit"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:107
+msgid "Change account status"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:113
+msgid "Customer adjustment"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:115
+msgid "Action"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:119
+msgid "Amount for credit/debit"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:119
+msgid "Status for status changes"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:123
+msgid "Reason (visible to authorized staff)"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:123
+msgid "I have verified the customer, amount and action. Debits remove available credit; closed accounts cannot reopen."
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:123
+msgid "Confirm wallet action"
+msgstr ""
+
+#: src/WordPress/Admin/AdminPage.php:126
+msgid "Open diagnostics and reconciliation"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:28
+msgid "You cannot confirm wallet funding."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:36
+msgid "Verify the funding reference and confirm receipt before continuing."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:41
+msgid "Another funding confirmation is running. Retry this form."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:60
+msgid "Funding could not be confirmed. Review this order and retry the same reference before making another adjustment."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:79
+msgid "Wallet funding requests"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:79
+msgid "Online funding is credited through its gateway settlement callback. Confirm a bank or cheque receipt only after independently verifying the funds reached the merchant."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:81
+msgid "Funding receipt confirmed and wallet credit committed."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:84
+msgid "Funding reference"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:84
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Customer"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:84
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Order"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:84
+#: src/WordPress/Customer/WalletPage.php:71
+msgid "Amount"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:92
+msgid "No pending funding requests."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:96
+msgid "Next funding requests"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:99
+msgid "Confirm offline receipt"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:101
+msgid "Funding reference from the table"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:101
+msgid "Bank or cheque transaction reference"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:101
+msgid "Reason and receipt verification notes"
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:104
+msgid "I have verified the received funds, customer, amount and currency. This confirmation adds spendable wallet credit."
+msgstr ""
+
+#: src/WordPress/Admin/FundingPage.php:104
+msgid "Confirm receipt and add credit"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:19
+msgid "Wallet payments"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:26
+msgid "Payment recovery requires wallet credit permission and an enabled PayPal adapter."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:32
+msgid "Select the original reference and confirm the recovery action."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:47
+msgid "Recovery could not be confirmed. The original reference remains for review; no replacement charge or refund was requested."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:64
+msgid "Wallet and PayPal payments"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:64
+msgid "Amounts preserve the original merchandise total. Pending or unknown provider responses require their original references. Do not replace a charge or refund while its outcome is unconfirmed."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:66
+msgid "PayPal is disabled. Financial records remain readable; provider recovery becomes available when the server adapter is enabled."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:69
+msgid "Original payment reference inspected. Review its current status below."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Reference"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Original total"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "PayPal"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:72
+msgid "Provider order / capture"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:84
+msgid "No split-payment records."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:88
+msgid "Next payment records"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:91
+msgid "Refunds awaiting confirmation or review"
+msgstr ""
+
+#. translators: 1: order number, 2: status, 3: formatted wallet amount, 4: formatted PayPal amount.
+#: src/WordPress/Admin/PaymentsPage.php:94
+#: src/WordPress/Customer/WalletPage.php:101
+#, php-format
+msgid "Order #%1$s: %2$s. Wallet: %3$s. PayPal: %4$s."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:97
+msgid "No pending refunds."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:101
+msgid "Inspect and recover an original reference"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Payment or refund reference from this page"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Reference type"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Payment"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Refund"
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Inspect the original provider reference. An approved payment may complete; a confirmed refund may restore wallet credit."
+msgstr ""
+
+#: src/WordPress/Admin/PaymentsPage.php:103
+msgid "Inspect and recover"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:21
+msgid "Wallet reports"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:28
+msgid "You cannot export wallet reports."
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:59
+msgid "Wallet liability report"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:59
+msgid "Opening liability + credits − debits − expiration = closing liability. Currencies are reported independently. All periods use UTC; the end date is exclusive."
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:61
+msgid "View report"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Opening"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Credits"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Debits"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Expiration"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:62
+msgid "Closing"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:77
+msgid "Export report CSV"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:84
+msgid "Start date"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:84
+msgid "End date (exclusive)"
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:97
+msgid "Choose valid report dates."
+msgstr ""
+
+#: src/WordPress/Admin/ReportsPage.php:107
+msgid "Start must precede end."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:18
+msgid "Wallet settings"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:25
+msgid "You cannot manage wallet settings."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:44
+msgid "Some settings could not be saved. Review the current configuration before continuing."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:55
+msgid "Wallet setup"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:55
+msgid "Start with closed-loop store credit. Choose how customers can fund and spend their wallet, then verify a test purchase and refund before accepting real funds."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:57
+msgid "Wallet settings saved."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:59
+msgid "Store currency:"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:61
+msgid "Allow full wallet payment at checkout"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:61
+msgid "Allow external top-ups"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:61
+msgid "Send wallet transaction notifications"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:64
+msgid "Allowed funding gateways"
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:64
+msgid "Select only gateways you have verified. Wallet credit is added after confirmed payment with an external payment reference."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:71
+msgid "Transfers, withdrawals, automatic card charges and split payments remain unavailable in this build. Deactivation preserves wallet history."
+msgstr ""
+
+#: src/WordPress/Admin/SettingsPage.php:71
+msgid "Save wallet settings"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:19
+msgid "Wallet tools"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:36
+msgid "Wallet schema"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:36
+msgid "Order storage"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:36
+msgid "Scheduler"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:37
+msgid "Wallet diagnostics and reconciliation"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:37
+msgid "This development build has not passed all commercial release gates. Diagnostics exclude credentials and customer contact details."
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:41
+msgid "Event delivery queue"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:45
+msgid "Failed deliveries need review in the WooCommerce wallet-platform log. A delivery failure does not undo a committed financial transaction."
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:45
+msgid "Check a batch of wallets"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:45
+msgid "This check reads the ledger, balances, lots and holds. It does not repair history. Scheduled checks freeze accounts with discrepancies."
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:47
+msgid "Continue after account reference (optional)"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:47
+msgid "Check next 20 accounts"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:55
+msgid "Balanced"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:55
+msgid "Discrepancy — review required"
+msgstr ""
+
+#: src/WordPress/Admin/ToolsPage.php:59
+msgid "Next cursor:"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:48
+msgid "Your wallet is temporarily unavailable. Please try again later."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:52
+msgid "Your wallet"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:53
+msgid "Store credit can be spent with this merchant. Pending and reserved funds are unavailable for new purchases."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:55
+msgid "Promotional (included in available)"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:58
+msgid "Account status:"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:61
+msgid "Upcoming credit expiration"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:61
+msgid "These amounts are already included in your available or pending credit. Expiry also applies while funds are reserved."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:68
+msgid "Add funds"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:68
+msgid "The amount below will be charged through an external gateway. Wallet credit is added after confirmed payment."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:71
+msgid "Continue to payment"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Recent transactions"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Wallet transactions"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Wallet transaction history"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Date"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Activity"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:73
+msgid "Balance change"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:75
+msgid "No transactions yet."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:83
+msgid "Older transactions"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:93
+msgid "Payments awaiting confirmation"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:93
+msgid "Refunds awaiting confirmation"
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:97
+msgid "Review the existing order before making another payment or refund request. Wallet refund credit is added after the external refund is confirmed."
+msgstr ""
+
+#: src/WordPress/Customer/WalletPage.php:103
+msgid "Review order"
+msgstr ""
+
+#: src/WordPress/Privacy.php:19
+msgid "Wallet Platform"
+msgstr ""
+
+#: src/WordPress/Privacy.php:19
+msgid "We retain wallet account identifiers, currency, amounts, credit provenance, payment references and privileged-action audit records for financial integrity. No card data or telemetry is collected by this plugin. Financial records may require retention after account closure; contact the merchant about its retention policy."
+msgstr ""
+
+#: src/WordPress/Privacy.php:22
+msgid "Wallet records"
+msgstr ""
+
+#: src/WordPress/Privacy.php:26
+msgid "Wallet financial retention"
+msgstr ""
+
+#: src/WordPress/Privacy.php:76
+msgid "Financial records were retained. The merchant must review its applicable retention obligations."
+msgstr ""
+
+#: src/WordPress/Rest/Controller.php:84
+msgid "Wallet processing is unavailable. Retry using the same request reference."
+msgstr ""
+
+#: src/WordPress/Rest/PayPalController.php:27
+msgid "Payment confirmation is pending. Your order will be paid only after PayPal and the wallet are confirmed. Do not pay again while this order is being reviewed."
+msgstr ""
+
+#: src/WordPress/Rest/PayPalController.php:76
+msgid "Wallet and PayPal payment confirmed."
+msgstr ""
+
+#: src/WordPress/Rest/PayPalController.php:76
+msgid "Review this order’s payment status before making another payment."
+msgstr ""
+
+#: src/WordPress/Rest/PayPalController.php:81
+msgid "Payment could not be confirmed from this return. Sign in as the order owner and review the existing order before paying again."
+msgstr ""
+
+#: assets/frontend/blocks.js:16
+msgid "Available:"
+msgstr ""
+
+#: assets/frontend/blocks.js:17
+#: assets/frontend/paypal.js:33
+msgid "Sign in and check your wallet balance before paying."
+msgstr ""
+
+#: assets/frontend/blocks.js:17
+#: assets/frontend/paypal.js:32
+msgid "Checking wallet balance…"
+msgstr ""
+
+#: assets/frontend/blocks.js:22
+msgid "Pay with wallet"
+msgstr ""
+
+#: assets/frontend/paypal.js:40
+msgid "The server will verify available wallet credit and the final order total."
+msgstr ""
+
+#: assets/frontend/paypal.js:47
+msgid "Pay with wallet and PayPal"
+msgstr ""

@@ -1,0 +1,157 @@
+name: Wallet development gates
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.2', '8.3', '8.4', '8.5']
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: wallet_ci
+          MYSQL_USER: wallet
+          MYSQL_PASSWORD: isolated-ci-only
+          MYSQL_ROOT_PASSWORD: isolated-ci-root-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=20
+    env:
+      WALLET_TEST_DSN: mysql:host=127.0.0.1;port=3306;dbname=wallet_ci
+      WALLET_TEST_USER: wallet
+      WALLET_TEST_PASSWORD: isolated-ci-only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '${{ matrix.php }}'
+          extensions: mysqli, pdo_mysql, pdo_sqlite, mbstring, zip
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer validate --strict
+      - run: php tests/run.php
+      - run: php tests/concurrency.php
+      - run: env -u WALLET_TEST_DSN php tests/run.php
+      - run: env -u WALLET_TEST_DSN php tests/concurrency.php
+      - run: vendor/bin/phpunit
+      - run: php tools/lint.php
+      - run: vendor/bin/phpstan analyse --memory-limit=1G --no-progress
+      - run: vendor/bin/phpcs
+  woocommerce:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        hpos: ['yes', 'no']
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: wallet_ci
+          MYSQL_USER: wallet
+          MYSQL_PASSWORD: isolated-ci-only
+          MYSQL_ROOT_PASSWORD: isolated-ci-root-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=20
+    env:
+      WALLET_WP_PATH: '${{ github.workspace }}/tests/.runtime/wordpress'
+      WALLET_WP_CLI_BINARY: '${{ github.workspace }}/tests/.runtime/wp-cli.phar'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mysqli, pdo_mysql, pdo_sqlite, mbstring, zip
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: composer install --no-interaction --prefer-dist
+      - run: npm ci
+      - run: npm run check && npm run build
+      - run: |
+          mkdir -p tests/.runtime
+          curl --fail --location https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o "$WALLET_WP_CLI_BINARY"
+          php tools/wp.php core download --version=7.1.2 --path="$WALLET_WP_PATH"
+          php tools/wp.php config create --dbname=wallet_ci --dbuser=wallet --dbpass=isolated-ci-only --dbhost=127.0.0.1:3306 --path="$WALLET_WP_PATH"
+          php tools/wp.php core install --url=http://127.0.0.1:13317 --title='Wallet CI' --admin_user=wallet_test_admin --admin_password=isolated-test-admin --admin_email=ci@example.invalid --skip-email --path="$WALLET_WP_PATH"
+          php tools/wp.php plugin install woocommerce --version=11.1.2 --activate --path="$WALLET_WP_PATH"
+          ln -s "$GITHUB_WORKSPACE" "$WALLET_WP_PATH/wp-content/plugins/woocommerce-wallet"
+          php tools/wp.php plugin activate woocommerce-wallet --path="$WALLET_WP_PATH"
+          php tools/wp.php wc hpos sync --user=wallet_test_admin --path="$WALLET_WP_PATH"
+          php tools/wp.php option update woocommerce_custom_orders_table_enabled '${{ matrix.hpos }}' --path="$WALLET_WP_PATH"
+      - run: php tests/woocommerce.php && php tests/store-api.php && php tests/woocommerce-paypal.php
+      - run: npx playwright install --with-deps chromium
+      - run: |
+          php tools/wp.php eval-file tests/browser-fixture.php --path="$WALLET_WP_PATH"
+          php -S 127.0.0.1:13317 -t "$WALLET_WP_PATH" tests/router.php >tests/.runtime/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:13317 >/dev/null; then break; fi
+            sleep 1
+          done
+          npm run test:e2e
+  package:
+    needs: [kernel, woocommerce]
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: wallet_package_ci
+          MYSQL_USER: wallet
+          MYSQL_PASSWORD: isolated-package-ci-only
+          MYSQL_ROOT_PASSWORD: isolated-package-ci-root-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s --health-timeout=5s --health-retries=20
+    env:
+      WALLET_WP_PATH: '${{ github.workspace }}/tests/.runtime/package-wordpress'
+      WALLET_WP_CLI_BINARY: '${{ github.workspace }}/tests/.runtime/wp-cli.phar'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: mysqli, mbstring, zip
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci && npm run build
+      - run: |
+          php tools/package.php
+          first_hash=$(sha256sum dist/woocommerce-wallet-0.1.0-dev.zip | cut -d' ' -f1)
+          php tools/package.php
+          second_hash=$(sha256sum dist/woocommerce-wallet-0.1.0-dev.zip | cut -d' ' -f1)
+          test "$first_hash" = "$second_hash"
+          php tools/verify-package.php
+      - run: |
+          mkdir -p tests/.runtime
+          curl --fail --location https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o "$WALLET_WP_CLI_BINARY"
+          php tools/wp.php core download --version=7.1.2 --path="$WALLET_WP_PATH"
+          php tools/wp.php config create --dbname=wallet_package_ci --dbuser=wallet --dbpass=isolated-package-ci-only --dbhost=127.0.0.1:3306 --path="$WALLET_WP_PATH"
+          php tools/wp.php config set DISABLE_WP_CRON true --raw --path="$WALLET_WP_PATH"
+          php tools/wp.php core install --url=http://127.0.0.1:13318 --title='Wallet ZIP CI' --admin_user=wallet_package_admin --admin_password=isolated-package-only --admin_email=package@example.invalid --skip-email --path="$WALLET_WP_PATH"
+          php tools/wp.php plugin install woocommerce --version=11.1.2 --path="$WALLET_WP_PATH"
+          php tools/wp.php config set WP_HTTP_BLOCK_EXTERNAL true --raw --path="$WALLET_WP_PATH"
+          php tools/wp.php plugin activate woocommerce --path="$WALLET_WP_PATH"
+          unzip -q dist/woocommerce-wallet-0.1.0-dev.zip -d "$WALLET_WP_PATH/wp-content/plugins"
+          php tools/wp.php plugin activate woocommerce-wallet --path="$WALLET_WP_PATH"
+          php tests/package.php
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wallet-development-evaluation
+          path: dist/

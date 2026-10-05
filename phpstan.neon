@@ -1,0 +1,13 @@
+parameters:
+    level: 5
+    # WC stubs mark cart as non-null even though CLI/order-pay may initialize it lazily.
+    treatPhpDocTypesAsCertain: false
+    bootstrapFiles:
+        - tools/phpstan-bootstrap.php
+    paths:
+        - src
+    scanDirectories:
+        - vendor/php-stubs/wordpress-stubs
+        - vendor/php-stubs/woocommerce-stubs
+        - vendor/php-stubs/wp-cli-stubs
+    tmpDir: .phpstan-cache

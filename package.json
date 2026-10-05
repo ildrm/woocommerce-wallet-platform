@@ -1,0 +1,7 @@
+{
+  "name": "wallet-platform",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {"build": "node tools/build.mjs", "check": "node --check assets/frontend/blocks.js && node --check assets/frontend/paypal.js", "test:e2e": "playwright test"},
+  "devDependencies": {"@playwright/test": "^1.55.0", "@axe-core/playwright": "^4.10.2", "esbuild": "^0.25.0"}
+}

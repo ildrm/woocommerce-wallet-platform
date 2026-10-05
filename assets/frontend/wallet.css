@@ -1,0 +1,12 @@
+.wallet-platform { max-inline-size: 72rem; }
+.wallet-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; }
+.wallet-cards > div { border: 1px solid #767676; border-radius: .5rem; padding: 1rem; background: #fff; color: #202124; }
+.wallet-cards dd { margin-inline-start: 0; margin-block-start: .5rem; font-size: 1.4rem; font-weight: 600; }
+.wallet-platform input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), .wallet-platform textarea { display: block; margin-block: .5rem 1rem; inline-size: min(100%, 24rem); max-inline-size: 100%; }
+.wallet-platform button { min-block-size: 44px; }
+.wallet-platform :focus-visible { outline: 3px solid #005fcc; outline-offset: 3px; }
+.wallet-table-scroll { overflow-x: auto; }
+.wallet-platform th, .wallet-platform td { text-align: start; padding: .75rem; }
+.wallet-platform table { inline-size: 100%; border-collapse: collapse; }
+.wallet-platform tr { border-block-end: 1px solid #767676; }
+@media (prefers-reduced-motion: reduce) { .wallet-platform * { scroll-behavior: auto; } }
